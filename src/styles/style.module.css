@@ -1,0 +1,33 @@
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
+  background-color: #edf2f7;
+  color: black;
+}
+#menu-content{
+  top: 6rem;
+}
+
+.requiredStar {
+  color: red; /* Set the color of the star */
+  margin-left: 4px; /* Adjust the spacing from the label */
+}
+.input-container::before {
+  content: '*'; /* Display the star */
+  color: red; /* Set the color of the star */
+  position: absolute;
+  top: 50%; /* Position vertically in the middle */
+  right: -20px; /* Adjust the spacing from the input */
+  transform: translateY(-50%);
+}
+.errorMessage {
+  color: red;
+  margin-top: 4px;
+  font-weight: bold;
+}
+.successMessage {
+  color: green;
+  margin-top: 4px;
+  font-weight: bold;
+}
