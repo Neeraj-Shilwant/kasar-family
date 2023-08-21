@@ -46,9 +46,9 @@ const Navbarmenu = () => {
       <NavbarBrand className='w-full container mx-auto flex flex-wrap items-center justify-between my-4'>
         
       <div className="pl-4 md:pl-0">
-        <a className="flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:no-underline font-extrabold font-sans" href="/" style={{paddingLeft: "22px"}}>
+        <Link className="flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:no-underline font-extrabold font-sans" href="/" style={{paddingLeft: "22px"}}>
             Kasar Family Info
-        </a>
+        </Link>
       </div>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center" style={{paddingRight:"7%"}}>
