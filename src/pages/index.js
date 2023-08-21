@@ -15,7 +15,7 @@ export default function Home() {
 
 // Config variables
 const SPREADSHEET_ID = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
-const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID;
+const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID1;
 const GOOGLE_CLIENT_EMAIL = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_EMAIL;
 const GOOGLE_SERVICE_PRIVATE_KEY =process.env.GOOGLE_SERVICE_PRIVATE_KEY;
 const SCOPES = [
@@ -58,9 +58,11 @@ const submitForm = (e) => {
     form.blood !== '' &&
     form.dob !== '' &&
     form.address !== '' &&
+    form.googleloc !== '' &&
     form.pincode !== '' &&
     form.aadhar !== '' &&
     form.mobile !== '' && 
+    form.house !== ''&&
     //wife
     form.wfullname !== '' &&
     form.weducation !== '' &&
@@ -100,10 +102,13 @@ const submitForm = (e) => {
       Bloodgroup: form.blood,
       DateofBirth: form.dob,
       Address: form.address,
+      GoogleLocation: form.googleloc,
       Pincode: form.pincode,
       Aadharcard: form.aadhar,
       Mobilenumber: form.mobile,
+      House: form.house,
     // wife details
+
     WifeFullName:form.wfullname,
     WifeEducation:form.weducation,
     WifeBloodgroup:form.wblood,
@@ -149,9 +154,11 @@ const submitForm = (e) => {
     blood: '',
     dob: '',
     address: '',
+    googleloc:'',
     pincode: '',
     aadhar: '',
     mobile: '',
+    house : '',
     //wife details
     wfullname:'',
     weducation:'',
@@ -271,7 +278,7 @@ const submitForm = (e) => {
             <hr className="bg-gray-300 my-3"/>
 
             {/* <!--Title--> */}
-            <h2 id='section1' className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Family Head</h2>
+            <h2 id='section1' className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Family Head / कुटुंब प्रमुख</h2>
 
             {/* <!--Card--> */}
             <div className= "p-8 mt-6 lg:mt-0 leading-normal rounded shadow bg-white" >
@@ -361,6 +368,18 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Google location Link
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                        <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="googleloc"  placeholder='google-location' onChange={handleChange}/>
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
                                 Pincode
                                 <span className={style.requiredStar}>*</span>
 
@@ -393,6 +412,19 @@ const submitForm = (e) => {
                         </div>
                         <div className="md:w-2/3">
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="mobile"  placeholder='mobile' onChange={handleChange}/>
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                House (Self or Rented)
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="house"  placeholder='self or rent' onChange={handleChange}/>
+
                         </div>
                     </div>
 
