@@ -10,7 +10,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 214, 219, 220;
   }
@@ -145,5 +145,51 @@ body {
   }
   100% {
     background-positon-x: 0px;
+  }
+}
+
+
+/* //menu
+ */
+
+ /* Styles for the menu button */
+.menu-button {
+  display: none; /* Hidden by default on larger screens */
+  cursor: pointer;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+}
+
+/* Styles for the navigation menu */
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .menu-button {
+    display: block; /* Show button on small screens */
+  }
+
+  .menu {
+    display: none; /* Hide menu on small screens */
+    flex-direction: column;
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+
+  /* Show menu when the button is clicked */
+  .menu.active {
+    display: flex;
   }
 }

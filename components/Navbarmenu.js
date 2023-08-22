@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Dropdown, Link, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 import {
     Navbar, 
@@ -9,7 +9,11 @@ import {
     NavbarMenu,
     NavbarMenuItem
   } from "@nextui-org/react";
+
 const Navbarmenu = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   return (
     <>
         {/* <nav id="header" className="bg-white fixed w-full z-10 top-0 shadow">
@@ -50,8 +54,16 @@ const Navbarmenu = () => {
             Kasar Family Info
         </Link>
       </div>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center" style={{paddingRight:"7%"}}>
+      </NavbarBrand >
+      <NavbarItem
+        className="menu-button block sm:hidden cursor-pointer"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </NavbarItem>
+      <NavbarContent className={`menu ${menuOpen ? 'active' : ''} menu-button block hidden sm:flex gap-4`} justify="center" style={{paddingRight:"7%"}}>
         <NavbarItem>
           <Link color="foreground" href="/" className='flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:underline font-extrabold font-sans'>
             Family Details

@@ -58,6 +58,7 @@ const submitForm = (e) => {
     form.blood !== '' &&
     form.dob !== '' &&
     form.address !== '' &&
+    form.area !== '' &&
     form.googleloc !== '' &&
     form.pincode !== '' &&
     form.aadhar !== '' &&
@@ -102,6 +103,7 @@ const submitForm = (e) => {
       Bloodgroup: form.blood,
       DateofBirth: form.dob,
       Address: form.address,
+      Area : form.area,
       GoogleLocation: form.googleloc,
       Pincode: form.pincode,
       Aadharcard: form.aadhar,
@@ -154,6 +156,7 @@ const submitForm = (e) => {
     blood: '',
     dob: '',
     address: '',
+    area:'',
     googleloc:'',
     pincode: '',
     aadhar: '',
@@ -215,56 +218,7 @@ const submitForm = (e) => {
       className={`flex min-h-screen flex-col items-center justify-between  p-0 md:p-24 ${inter.className}`}
     >
       
-      {/* <form className="space-y-3 max-w-lg mx-auto p-5" onSubmit={submitForm}>
-      <p className="font-semibold text-2xl text-center">Contact Form</p>
-      <label className="block">
-        <span className="text-gray-700 font-semibold">Full Name</span>
-        <input
-          name="name"
-          type="text"
-          className="form-input form-field-contact"
-          placeholder="Full Name"
-          onChange={handleChange}
-        />
-      </label>
-      <label className="block">
-        <span className="text-gray-700 font-semibold">Email</span>
-        <input
-          name="email"
-          type="email"
-          className="form-input form-field-contact"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-      </label>
-      <label className="block">
-        <span className="text-gray-700 font-semibold">Topic</span>
-        <input
-          name="topic"
-          type="text"
-          className="form-input form-field-contact"
-          placeholder="Topic"
-          onChange={handleChange}
-        />
-      </label>
-      <label className="block">
-        <span className="text-gray-700 font-semibold">Description</span>
-        <textarea
-          name="description"
-          className="form-textarea form-field-contact"
-          rows="3"
-          placeholder="Description"
-          onChange={handleChange}
-        />
-      </label>
-
-      <button
-        className="bg-green-200 px-3 py-1 font-semibold shadow-md rounded-md"
-        type="submit"
-      >
-        Send Message
-      </button>
-    </form> */}
+      
     <div className='container justify-center w-full flex flex-wrap mx-auto px-2 pt-4 '>
       
         <div className="w-full lg:w-4/5 p-4 lg:px-8">
@@ -363,6 +317,20 @@ const submitForm = (e) => {
                         </div>
                         <div className="md:w-2/3">
                             <textarea className="form-textarea block w-full focus:bg-white" id="my-textarea"  rows="3" name ="address"  placeholder='address' onChange={handleChange}></textarea>
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Area Name
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                        <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="area"  placeholder='area-name' onChange={handleChange}/>
+                        <p className="py-2 text-sm text-gray-600">Ex: Pimprigaon, Akurdi, Chinchwad</p>
+
                         </div>
                     </div>
                     <div className="md:flex mb-6">
