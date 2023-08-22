@@ -96,31 +96,34 @@ const submitForm = (e) => {
     // Perform your form submission logic here
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
+    setForm(initialvalues);
   }
   else{
     setErrorMessage('Check the mandatory fields.');
     setSuccessMessage('');
   }
 };
-  const [form, setForm] = useState({
+
+    const initialvalues = {
    
-    //primary key Fullname
-    fullname:'',
-    //father 
-    fathername:'',
-    fatherblood:'',
-    fatherdob:'',
-    fatherprofession:'',
-    fathermobile:'',
-    //mother
-    mothername:'',
-    motherblood:'',
-    motherdob:'',
-    motherprofession:'',
-    mothermobile:''
-    
-    
-  });
+        //primary key Fullname
+        fullname:'',
+        //father 
+        fathername:'',
+        fatherblood:'',
+        fatherdob:'',
+        fatherprofession:'',
+        fathermobile:'',
+        //mother
+        mothername:'',
+        motherblood:'',
+        motherdob:'',
+        motherprofession:'',
+        mothermobile:''
+        
+        
+      };
+  const [form, setForm] = useState(initialvalues);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');

@@ -78,13 +78,15 @@ const submitForm = (e) => {
     // Perform your form submission logic here
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
+    setForm(initialvalues);
   }
   else{
     setErrorMessage('Check the mandatory fields.');
     setSuccessMessage('');
   }
 };
-  const [form, setForm] = useState({
+
+  const initialvalues = {
    
     //primary key Fullname
     fullname:'',
@@ -95,7 +97,8 @@ const submitForm = (e) => {
     biodata:''
     
     
-  });
+  };
+  const [form, setForm] = useState(initialvalues);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');

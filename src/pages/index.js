@@ -143,52 +143,54 @@ const submitForm = (e) => {
     // Perform your form submission logic here
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
+    setForm(initialvalues);
   }
   else{
     setErrorMessage('Check the mandatory fields.');
     setSuccessMessage('');
   }
 };
-  const [form, setForm] = useState({
-    email: '',
-    fullname: '',
-    education: '',
-    blood: '',
-    dob: '',
-    address: '',
-    area:'',
-    googleloc:'',
-    pincode: '',
-    aadhar: '',
-    mobile: '',
-    house : '',
-    //wife details
-    wfullname:'',
-    weducation:'',
-    wblood:'',
-    wdob:'',
-    waadhar:'',
-    wmobile:'',
-    wprofession:'',
-    //children
-    cfullname:'',
-    cgender:'',
-    ceducation:'',
-    cblood:'',
-    cdob:'',
-    caadhar:'',
-    cmobile:'',
-    cprofession:'',
-    //child 2
-    c2fullname:'',
-    c2gender:'',
-    c2education:'',
-    c2blood:'',
-    c2dob:'',
-    c2aadhar:'',
-    c2mobile:'',
-    c2profession:''
-  });
+    const initialvalues = {
+        email: '',
+        fullname: '',
+        education: '',
+        blood: '',
+        dob: '',
+        address: '',
+        area:'',
+        googleloc:'',
+        pincode: '',
+        aadhar: '',
+        mobile: '',
+        house : '',
+        //wife details
+        wfullname:'',
+        weducation:'',
+        wblood:'',
+        wdob:'',
+        waadhar:'',
+        wmobile:'',
+        wprofession:'',
+        //children
+        cfullname:'',
+        cgender:'',
+        ceducation:'',
+        cblood:'',
+        cdob:'',
+        caadhar:'',
+        cmobile:'',
+        cprofession:'',
+        //child 2
+        c2fullname:'',
+        c2gender:'',
+        c2education:'',
+        c2blood:'',
+        c2dob:'',
+        c2aadhar:'',
+        c2mobile:'',
+        c2profession:''
+      };
+  const [form, setForm] = useState(initialvalues);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
