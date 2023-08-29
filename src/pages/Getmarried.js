@@ -174,8 +174,17 @@ const submitForm = (e) => {
                             </label>
                         </div>
                             <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="blood"  placeholder='blood-group' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: O+ , AB-</p>
+                            <select value={form.blood} onChange={handleChange} name='blood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
                         </div>
 
                     </div>
@@ -201,7 +210,7 @@ const submitForm = (e) => {
                         </div>
                         <div className="md:w-2/3">
 
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="age"  placeholder='age' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="number" name ="age"  placeholder='age' onChange={handleChange}/>
 
                         </div>
                     </div>
@@ -215,7 +224,13 @@ const submitForm = (e) => {
                              </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="gender"  placeholder='gender' onChange={handleChange}/>
+                        <select value={form.gender} onChange={handleChange} name='gender' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="prefer not to say">Prefer Not to say</option>
+                                
+                            </select>
                         </div>
                     </div>
                     <div className="md:flex mb-6">

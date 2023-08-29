@@ -6,7 +6,10 @@ import {JWT}  from 'google-auth-library'
 import Head from 'next/head';
 import style from'@/styles/style.module.css'
 
-
+import DatePicker from 'react-datepicker'; 
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from 'date-fns';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -52,91 +55,146 @@ const submitForm = (e) => {
   e.preventDefault();
 
   if (
-    form.email !== '' &&
+    email !== '' &&
+    setMailerror === '' &&
     form.fullname !== '' &&
     form.education !== '' &&
     form.blood !== '' &&
-    form.dob !== '' &&
+    formState.dob !== null &&
     form.address !== '' &&
-    form.area !== '' &&
     form.googleloc !== '' &&
-    form.pincode !== '' &&
-    form.aadhar !== '' &&
-    form.mobile !== '' && 
-    form.house !== ''&&
+    
+    formmob.mobile !== '' &&
+    // setmobErrors.mobile === '' && 
+    form.house !== '' &&
+    form.house !== '' &&
+    form.ref1 !== '' && 
+    form.ref2 !== '' &&
+    formmob.con1 !== '' &&
+    formmob.con2 !== '' &&
+    
+
     //wife
     form.wfullname !== '' &&
     form.weducation !== '' &&
     form.wblood !== '' &&
-    form.wdob !== '' &&
-    form.waadhar !== '' &&
-    form.wmobile !== '' &&
-    form.wprofession !== '' ||
+    formState.wdob !== null &&
+    formmob.wmobile !== '' &&
+    // setmobErrors.wmobile === '' && 
+    form.wprofession !== '' &&
+    //father
+    form.fathername !== '' &&
+    form.fatherblood !== '' &&
+    formState.fatherdob !== null &&
+    form.fatherprofession !== '' &&
+    formmob.fathermobile !== '' &&
+    //mother
+    form.mothername !== '' &&
+    form.motherblood !== '' &&
+    formState.motherdob !== null && 
+    form.motherprofession !== ''&&
+    formmob.mothermobile !== '' ||
     //children 
     form.cfullname !== '' ||
     form.cgender !== '' ||
     form.ceducation !== '' ||
     form.cblood !== '' ||
-    form.cdob !== '' ||
-    form.caadhar !== '' ||
-    form.cmobile !== '' ||
+    formState.cdob !== null ||
+    form.cmarry !== '' ||
+    formmob.cmobile !== '' ||
     form.cprofession !== '' ||
     //child 2
     form.c2fullname !== '' ||
     form.c2gender !== '' ||
     form.c2education !== '' ||
     form.c2blood !== '' ||
-    form.c2dob !== '' ||
-    form.c2aadhar !== '' ||
-    form.c2mobile !== '' ||
-    form.c2profession !== ''
-    
-
+    formState.c2dob !== null ||
+    form.c2marry !== '' ||
+    formmob.c2mobile !== '' ||
+    form.c2profession !== '' 
     
   ) {
     // Data add for append
     const newRow = {
         //family head
-      Email: form.email,
+      Email: email,
       FullName: form.fullname,
       Education: form.education,
       Bloodgroup: form.blood,
-      DateofBirth: form.dob,
+      DateofBirth: formState.dob,
       Address: form.address,
-      Area : form.area,
       GoogleLocation: form.googleloc,
-      Pincode: form.pincode,
-      Aadharcard: form.aadhar,
-      Mobilenumber: form.mobile,
+      
+      Mobilenumber: formmob.mobile,
       House: form.house,
+      AlreadyInvolvedOrganization:form.organ,
+      AlreadyInvolvedOtherOrganization : form.organother,
+      Interest:form.iorgan,
+      OtherInterest:form.iotherorgan,
+      Reference_Name1:form.ref1,
+      Contact_1:formmob.con1,
+      Reference_Name2:form.ref2,
+      Contact_2:formmob.con2,
     // wife details
 
     WifeFullName:form.wfullname,
     WifeEducation:form.weducation,
     WifeBloodgroup:form.wblood,
-    WifeDateofBirth:form.wdob,
-    WifeAadharcard:form.waadhar,
-    WifeMobilenumber:form.wmobile,
+    WifeDateofBirth:formState.wdob,
+    WifeMobilenumber:formmob.wmobile,
     WifeProfession:form.wprofession,
+    WifeAlreadyInvolvedOrganization:form.worgan,
+    WifeAlreadyInvolvedOtherOrganization:form.worganother,
+    WifeInterest:form.wiorgan,
+    WifeOtherInterest:form.wiotherorgan,
     //children
     ChildFullName:form.cfullname,
     ChildGender:form.cgender,
     ChildEducation:form.ceducation,
     ChildBloodgroup:form.cblood,
-    ChildDateofBirth:form.cdob,
-    ChildAadharcard:form.caadhar,
-    ChildMobilenumber:form.cmobile,
+    ChildDateofBirth:formState.cdob,
+    ChildGetmarry : form.cmarry,
+    ChildMobilenumber:formmob.cmobile,
     ChildProfession:form.cprofession,
+    CAlreadyInvolvedOrganization:form.corgan,
+    CAlreadyInvolvedOtherOrganization:form.corganother,
+    CInterest:form.ciorgan,
+    COtherInterest:form.ciotherorgan,
 
     //child 2
     Child2FullName:form.c2fullname,
     Child2Gender:form.c2gender,
     Child2Education:form.c2education,
     Child2Bloodgroup:form.c2blood,
-    Child2DateofBirth:form.c2dob,
-    Child2Aadharcard:form.c2aadhar,
-    Child2Mobilenumber:form.c2mobile,
+    Child2DateofBirth:formState.c2dob,
+    Child2Getmarry : form.c2marry,
+    Child2Mobilenumber:formmob.c2mobile,
     Child2Profession:form.c2profession,
+    C2AlreadyInvolvedOrganization:form.c2organ,
+    C2AlreadyInvolvedOtherOrganization:form.c2organother,
+    C2Interest:form.c2iorgan,
+    C2OtherInterest:form.c2iotherorgan,
+
+    //Father
+    FatherName:form.fathername,
+    FatherBloodgroup : form.fatherblood,
+    FatherDateofBirth:formState.fatherdob,
+    FatherProfession:form.fatherprofession,
+    FatherMobilenumber:formmob.fathermobile,
+    FAlreadyInvolvedOrganization:form.forgan,
+    FAlreadyInvolvedOtherOrganization:form.forganother,
+    FInterest:form.fiorgan,
+    FOtherInterest:form.fiotherorgan,
+    //Mother
+    MotherName:form.mothername,
+    MotherBloodgroup:form.motherblood,
+    MotherDateofBirth:formState.motherdob,
+    MotherProfession:form.motherprofession,
+    MotherMobilenumber:formmob.mothermobile,
+    MAlreadyInvolvedOrganization:form.morgan,
+    MAlreadyInvolvedOtherOrganization:form.morganother,
+    MInterest:form.miorgan,
+    MOtherInterest:form.miotherorgan,
     };
 
     appendSpreadsheet(newRow);
@@ -144,66 +202,199 @@ const submitForm = (e) => {
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
     setForm(initialvalues);
+    setFormState({dob: null,
+        wdob:null, 
+        cdob:null,
+        c2dob:null,
+        fatherdob:null,
+        motherdob:null});
+    setformmob({mobile: '',
+    con1:'',
+    con2:'',
+    wmobile:'',
+    cmobile:'',
+    c2mobile:'',
+    fathermobile:'',
+    mothermobile:''});
+       
+        
+      
+     
+     
+  
+    
+    // setnext(true);
   }
   else{
+    console.log("error")
     setErrorMessage('Check the mandatory fields.');
     setSuccessMessage('');
+    // setnext(false);
   }
 };
     const initialvalues = {
-        email: '',
+        
         fullname: '',
         education: '',
         blood: '',
-        dob: '',
+        
         address: '',
-        area:'',
         googleloc:'',
-        pincode: '',
-        aadhar: '',
-        mobile: '',
+        
+        
         house : '',
+        organ:'',
+        organother:'',
+        iorgan:'',
+        iotherorgan:'',
+        ref1:'',
+        ref2:'',
+        
         //wife details
         wfullname:'',
         weducation:'',
         wblood:'',
-        wdob:'',
-        waadhar:'',
-        wmobile:'',
+        
+        
         wprofession:'',
+        worgan:'',
+        worganother:'',
+        wiorgan:'',
+        wiotherorgan:'',
+        
         //children
         cfullname:'',
         cgender:'',
         ceducation:'',
         cblood:'',
-        cdob:'',
-        caadhar:'',
-        cmobile:'',
+        cmarry:'',
+        
         cprofession:'',
+        corgan:'',
+        corganother:'',
+        ciorgan:'',
+        ciotherorgan:'',
         //child 2
         c2fullname:'',
         c2gender:'',
         c2education:'',
         c2blood:'',
-        c2dob:'',
-        c2aadhar:'',
-        c2mobile:'',
-        c2profession:''
+        c2marry:'',
+       
+        c2profession:'',
+        c2organ:'',
+        c2organother:'',
+        c2iorgan:'',
+        c2iotherorgan:'',
+        //father 
+        fathername:'',
+        fatherblood:'',
+       
+        fatherprofession:'',
+        forgan:'',
+        forganother:'',
+        fiorgan:'',
+        fiotherorgan:'',
+        //mother
+        mothername:'',
+        motherblood:'',
+        
+        motherprofession:'',
+        morgan:'',
+        morganother:'',
+        miorgan:'',
+        miotherorgan:'',
+        
       };
   const [form, setForm] = useState(initialvalues);
+  
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
+      
     });
-   
   };
+  const [formState, setFormState] = useState({
+    dob: null,
+    wdob:null, 
+    cdob:null,
+    c2dob:null,
+    fatherdob:null,
+    motherdob:null// Initialize with null or a default date
+  });
 
+  const handleDateChange = (date,field) => {
+    setFormState({
+      ...formState,
+      [field] : date,
+    });
+  };
+   
+//   const [next,setnext] = useState(false);
+//email
+    const [email, setEmail] = useState('');
+    const [mailerror, setMailerror] = useState('');
   
+    const handleEmailChange = (e) => {
+        const newEmail = e.target.value;
+        setEmail(newEmail);
+        setMailerror(validateEmail(newEmail));
+      };
+
+    
+    
+    const validateEmail = (value) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return !emailRegex.test(value) ? 'Invalid email format' : '';
+    };
+    
+
+    //mobile
+    const [formmob,setformmob] = useState({
+        mobile: '',
+        con1:'',
+        con2:'',
+        wmobile:'',
+        cmobile:'',
+        c2mobile:'',
+        fathermobile:'',
+        mothermobile:''
+
+    })
+    const [moberrors, setmobErrors] = useState({
+        mobile: '',
+        con1:'',
+        con2:'',
+        wmobile:'',
+        cmobile:'',
+        c2mobile:'',
+        fathermobile:'',
+        mothermobile:''
+      });
+    const handleMobchange = (e,field) =>{
+        const newValue = e.target.value;
+        const updatedFormMob = {
+            ...formmob,
+            [field]: newValue,
+          };
+      
+          setformmob(updatedFormMob);
+
+          setmobErrors({
+            ...moberrors,
+            [field]: validateMobile(newValue) ? 'Invalid mobile format' : '',
+          });
  
+    }
+    const validateMobile = (value) => {
+        const mobileRegex = /^\d{10}$/;
+        return !mobileRegex.test(value);
+      };
 
 
   return (<>
@@ -239,22 +430,11 @@ const submitForm = (e) => {
             {/* <!--Card--> */}
             <div className= "p-8 mt-6 lg:mt-0 leading-normal rounded shadow bg-white" >
                 <form  onSubmit={submitForm}   >
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Email Id
-                                <span className={style.requiredStar}>*</span>
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="form-input  block w-full focus:bg-white" id="my-textfield" type="text" name ="email"   placeholder='email' onChange={handleChange}  />
-                            <p className="py-2 text-sm text-gray-600"></p>
-                        </div>
-                    </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Full Name
+                                Full Name / पूर्ण नाव
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
@@ -267,7 +447,21 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Education
+                                Email Id
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input  block w-full focus:bg-white" id="my-textfield" type="email" name ="email"   placeholder='email' onChange={handleEmailChange}  />
+                            {/* <p className="py-2 text-sm text-gray-600"></p> */}
+                            {mailerror && <div style={{ color: 'red' }}>{mailerror}</div>}
+                            
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                                Education / शिक्षण
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
@@ -281,14 +475,25 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
-                                Blood group
+                                Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                             <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="blood"  placeholder='blood-group' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: O+ , AB-</p>
+                            {/* blood group component  */}
+                            <select value={form.blood} onChange={handleChange} name='blood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>
                         </div>
 
                     </div>
@@ -296,45 +501,42 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Date of Birth
+                                Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            {/* <textarea className="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="8"></textarea> */}
-
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="dob"  placeholder='date-of-birth' onChange={handleChange}/>
-
-                            <p className="py-2 text-sm text-gray-600">Ex: dd/mm/yyyy</p>
+                           
+                           
+                            <DatePicker className='form-input block w-full focus:bg-white' selected={formState.dob}
+                            onChange={(date) => handleDateChange(date, 'dob')}
+                            placeholderText="Select Date of Birth"
+                            name="dob"
+                            dateFormat="dd-MM-yyyy"
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}
+                         />
                         </div>
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Address
+                                Address / पत्ता
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
                             <textarea className="form-textarea block w-full focus:bg-white" id="my-textarea"  rows="3" name ="address"  placeholder='address' onChange={handleChange}></textarea>
-                        </div>
-                    </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Area Name
-                                <span className={style.requiredStar}>*</span>
-
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                        <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="area"  placeholder='area-name' onChange={handleChange}/>
-                        <p className="py-2 text-sm text-gray-600">Ex: Pimprigaon, Akurdi, Chinchwad</p>
+                            <p className="py-2 text-sm text-gray-600">Ex: area,near by/behind, society name ,colony name,house name / flat number, pincode.</p>
 
                         </div>
                     </div>
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
@@ -347,56 +549,146 @@ const submitForm = (e) => {
                         <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="googleloc"  placeholder='google-location' onChange={handleChange}/>
                         </div>
                     </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Pincode
-                                <span className={style.requiredStar}>*</span>
-
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="pincode"  placeholder='pincode' onChange={handleChange}/>
-
-                        </div>
-                    </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Aadhar Card Number
-                                <span className={style.requiredStar}>*</span>
-
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="aadhar"  placeholder='aadhar' onChange={handleChange}/>
-                        </div>
-                    </div>
+                    
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Mobile Number
+                                Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="mobile"  placeholder='mobile' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="mobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'mobile')}/>
+                            {moberrors.mobile && <div style={{ color: 'red' }}>{moberrors.mobile}</div>}
                         </div>
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                House (Self or Rented)
+                                House (Own or Rent)
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="house"  placeholder='self or rent' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="house"  placeholder='own or rent' onChange={handleChange}/>
 
                         </div>
                     </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.organ} onChange={handleChange} name='organ' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="organother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.iorgan} onChange={handleChange} name='iorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="iotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Reference Name 1 
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="ref1"  placeholder='full-name' onChange={handleChange}/>
+
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Contact number 1
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="con1"  placeholder='contact-number' onChange={(e) => handleMobchange(e, 'con1')}/>
+                            {moberrors.con1 && <div style={{ color: 'red' }}>{moberrors.con1}</div>}
+
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Reference Name 2 
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="ref2"  placeholder='full-name' onChange={handleChange}/>
+
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Contact Number 2 
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="con2"  placeholder='contact-number' onChange={(e) => handleMobchange(e, 'con2')}/>
+                            {moberrors.con2 && <div style={{ color: 'red' }}>{moberrors.con2}</div>}
+
+                        </div>
+                    </div>
+                    
 
                     
                 </form>
@@ -418,7 +710,7 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Full Name
+                                Full Name / पूर्ण नाव
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
@@ -431,7 +723,7 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Education
+                                Education / शिक्षण
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
@@ -445,14 +737,24 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
-                                Blood group
+                                Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                             <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="wblood"  placeholder='blood-group' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: O+ , AB-</p>
+                            <select value={form.wblood} onChange={handleChange} name='wblood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>
                         </div>
 
                     </div>
@@ -460,49 +762,48 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Date of Birth
+                                Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            {/* <textarea className="form-textarea block w-full focus:bg-white" id="my-textarea" value="" rows="8"></textarea> */}
-
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="wdob"  placeholder='date-of-birth' onChange={handleChange}/>
-
-                            <p className="py-2 text-sm text-gray-600">Ex: dd/mm/yyyy</p>
+                           
+                           
+                            <DatePicker className='form-input block w-full focus:bg-white' selected={formState.wdob}
+                            onChange={(date) => handleDateChange(date, 'wdob')}
+                            placeholderText="Select Date of Birth"
+                            name="wdob"
+                            dateFormat="dd-MM-yyyy"
+                            
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}/>
                         </div>
                     </div>
                     
                     
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Aadhar Card Number
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                                Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="waadhar"  placeholder='aadhar' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="wmobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'wmobile')}/>
+                            {moberrors.wmobile && <div style={{ color: 'red' }}>{moberrors.wmobile}</div>}
+
                         </div>
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Mobile Number
-                                <span className={style.requiredStar}>*</span>
-
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="wmobile"  placeholder='mobile' onChange={handleChange}/>
-                        </div>
-                    </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Profession
+                                Profession / व्यवसाय
                                 <span className={style.requiredStar}>*</span>
 
                             </label>
@@ -510,6 +811,64 @@ const submitForm = (e) => {
                         <div className="md:w-2/3">
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="wprofession"  placeholder='profession' onChange={handleChange}/>
                         </div>
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.worgan} onChange={handleChange} name='worgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="worganother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.wiorgan} onChange={handleChange} name='wiorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="wiotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
                     </div>
 
                     
@@ -533,7 +892,7 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Full Name
+                                Full Name / पूर्ण नाव
 
                             </label>
                         </div>
@@ -544,20 +903,27 @@ const submitForm = (e) => {
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
-                                Gender
+                                Gender / लिंग
 
                             </label>
                         </div>
+                        
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="cgender"  placeholder='gender' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: Male,Female,Prefer not to say</p>
+                            <select value={form.cgender} onChange={handleChange} name='cgender' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="prefer not to say">Prefer Not to say</option>
+                                
+                            </select>
                         </div>
+                        
                     </div>
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Education
+                                Education / शिक्षण
 
                             </label>
                         </div>
@@ -570,14 +936,24 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
-                                Blood group
+                                Blood group / रक्त गट
                                 
 
                             </label>
                         </div>
                             <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="cblood"  placeholder='blood-group' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: O+ , AB-</p>
+                            <select value={form.cblood} onChange={handleChange} name='cblood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>
                         </div>
 
                     </div>
@@ -585,48 +961,63 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Date of Birth
-                                
+                                Date of Birth / जन्मतारीख
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="cdob"  placeholder='date-of-birth' onChange={handleChange}/>
-
-                            <p className="py-2 text-sm text-gray-600">Ex: dd/mm/yyyy</p>
+                           
+                           
+                            <DatePicker className='form-input block w-full focus:bg-white' selected={formState.cdob}
+                            onChange={(date) => handleDateChange(date, 'cdob')}
+                            placeholderText="Select Date of Birth"
+                            name="cdob"
+                            dateFormat="dd-MM-yyyy"
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}/>
                         </div>
                     </div>
-                    
-                    
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Aadhar Card Number
-                                
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            लग्नासाठी स्थळ बघणे ?
 
                             </label>
                         </div>
+                        
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="caadhar"  placeholder='aadhar' onChange={handleChange}/>
+                            <select value={form.cmarry} onChange={handleChange} name='cmarry' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="male">Yes</option>
+                                <option value="female">No</option>
+                                
+                            </select>
                         </div>
+                        
                     </div>
+                    
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Mobile Number
+                                Mobile Number / मोबाईल नंबर
                                
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="cmobile"  placeholder='mobile' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="cmobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'cmobile')}/>
+                            {moberrors.cmobile && <div style={{ color: 'red' }}>{moberrors.cmobile}</div>}
+
                         </div>
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Profession
+                                Profession / व्यवसाय
                                 
 
                             </label>
@@ -635,7 +1026,63 @@ const submitForm = (e) => {
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="cprofession"  placeholder='profession' onChange={handleChange}/>
                         </div>
                     </div>
-                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.corgan} onChange={handleChange} name='corgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="corganother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.ciorgan} onChange={handleChange} name='ciorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="ciotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
                     
                     
                 </form>
@@ -659,7 +1106,7 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Full Name
+                                Full Name / पूर्ण नाव
 
                             </label>
                         </div>
@@ -670,20 +1117,25 @@ const submitForm = (e) => {
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
-                                Gender
+                                Gender / लिंग
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2gender"  placeholder='gender' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: Male,Female,Prefer not to say</p>
+                        <select value={form.c2gender} onChange={handleChange} name='c2gender' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="prefer not to say">Prefer Not to say</option>
+                                
+                            </select>
                         </div>
                     </div>
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                                Education
+                                Education / शिक्षण
 
                             </label>
                         </div>
@@ -696,63 +1148,87 @@ const submitForm = (e) => {
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
-                                Blood group
+                                Blood group / रक्त गट
                                 
 
                             </label>
                         </div>
                             <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2blood"  placeholder='blood-group' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Ex: O+ , AB-</p>
-                        </div>
+                            <select value={form.c2blood} onChange={handleChange} name='c2blood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>                        </div>
 
                     </div>
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Date of Birth
-                                
+                                Date of Birth / जन्मतारीख
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="c2dob"  placeholder='date-of-birth' onChange={handleChange}/>
-
-                            <p className="py-2 text-sm text-gray-600">Ex: dd/mm/yyyy</p>
+                           
+                           
+                            <DatePicker className='form-input block w-full focus:bg-white' selected={formState.c2dob}
+                            onChange={(date) => handleDateChange(date, 'c2dob')}
+                            placeholderText="Select Date of Birth"
+                            name="c2dob"
+                            dateFormat="dd-MM-yyyy"
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}/>
                         </div>
                     </div>
                     
-                    
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
-                                Aadhar Card Number
-                                
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            लग्नासाठी स्थळ बघणे ?
 
                             </label>
                         </div>
+                        
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2aadhar"  placeholder='aadhar' onChange={handleChange}/>
+                            <select value={form.c2marry} onChange={handleChange} name='c2marry' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="male">Yes</option>
+                                <option value="female">No</option>
+                                
+                            </select>
                         </div>
+                        
                     </div>
+                    
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Mobile Number
+                                Mobile Number / मोबाईल नंबर
                                
 
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2mobile"  placeholder='mobile' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="c2mobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'c2mobile')}/>
+                            {moberrors.c2mobile && <div style={{ color: 'red' }}>{moberrors.c2mobile}</div>}
+
                         </div>
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Profession
+                                Profession / व्यवसाय
                                 
 
                             </label>
@@ -760,6 +1236,409 @@ const submitForm = (e) => {
                         <div className="md:w-2/3">
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2profession"  placeholder='profession' onChange={handleChange}/>
                         </div>
+                    </div>
+                    
+                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.c2organ} onChange={handleChange} name='c2organ' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2organother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.c2iorgan} onChange={handleChange} name='c2iorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2iotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+                </form>
+
+            </div> 
+            
+        </div>
+
+    </div>
+    
+    {/* parent section */}
+    <div className='container justify-center w-full flex flex-wrap mx-auto px-2 pt-4 '>
+      
+        <div className="w-full lg:w-4/5 p-4 lg:px-8">
+
+            {/* <!--Title--> */}
+            <h1 className="flex items-center font-sans font-bold break-normal text-gray-700 px-2 text-xl mt-12 lg:mt-0 md:text-2xl">
+				Parent details
+			</h1>
+
+            
+            {/* <!--/Card--> */}
+
+            {/* <!--divider--> */}
+            <hr className="bg-gray-300 my-3"/>
+            {/* <!--Title--> */}
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Father Details</h2>
+
+
+            {/* <!--Card--> */}
+            
+             <div   className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+             
+             <form  onSubmit={submitForm} >
+                    
+                    
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                                Father Name / वडिलांचे नाव
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="fathername"  placeholder='father-name' onChange={handleChange}/>
+                        </div>
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                                Blood group / रक्त गट
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            <select value={form.fatherblood} onChange={handleChange} name='fatherblood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Date of Birth / जन्मतारीख
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+
+                        <DatePicker className='form-input block w-full focus:bg-white' selected={formState.fatherdob}
+                            onChange={(date) => handleDateChange(date, 'fatherdob')}
+                            placeholderText="Select Date of Birth"
+                            name="fatherdob"
+                            dateFormat="dd-MM-yyyy"
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}
+                         />
+                        </div>
+                    </div>
+                    
+                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Profession / व्यवसाय
+                                <span className={style.requiredStar}>*</span>
+                             </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="fatherprofession"  placeholder='work' onChange={handleChange}/>
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                                Mobile Number / मोबाईल नंबर
+                               
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="fathermobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'fathermobile')}/>
+                            {moberrors.fathermobile && <div style={{ color: 'red' }}>{moberrors.fathermobile}</div>}
+
+                        </div>
+                    </div>
+                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.forgan} onChange={handleChange} name='forgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="forganother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.fiorgan} onChange={handleChange} name='fiorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="fiotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+                    
+                    
+                    
+                </form>
+
+            </div> 
+
+
+            {/* child 2 */}
+            <hr className="bg-gray-300 my-3"/>
+            {/* <!--Title--> */}
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Mother Details</h2>
+
+
+            {/* <!--Card--> */}
+            
+             <div   className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+             
+             <form  onSubmit={submitForm} >
+                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                                Mother Name / आईचे नाव
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="mothername"  placeholder='full-name' onChange={handleChange}/>
+                        </div>
+                    </div>
+                    
+                    
+                    
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                                Blood group / रक्त गट
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            <select value={form.motherblood} onChange={handleChange} name='motherblood' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="No idea">No idea</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Date of Birth / जन्मतारीख
+                                <span className={style.requiredStar}>*</span>
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+
+                        <DatePicker className='form-input block w-full focus:bg-white' selected={formState.motherdob}
+                            onChange={(date) => handleDateChange(date, 'motherdob')}
+                            placeholderText="Select Date of Birth"
+                            name="motherdob"
+                            dateFormat="dd-MM-yyyy"
+                            showYearDropdown
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={100}
+                            maxDate={new Date()} 
+                            minDate={new Date('1900-01-01')}
+                         />
+                        </div>
+                    </div>
+                    
+                    
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                                Profession / व्यवसाय
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="motherprofession"  placeholder='work' onChange={handleChange}/>
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                                Mobile Number / मोबाईल नंबर        
+                                <span className={style.requiredStar}>*</span>
+
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="tel"  name ="mothermobile"  placeholder='mobile' onChange={(e) => handleMobchange(e, 'mothermobile')}/>
+                            {moberrors.mothermobile && <div style={{ color: 'red' }}>{moberrors.mothermobile}</div>}
+
+                        </div>
+                    </div>
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संघटनेसोबत सक्रिय कार्यरत आहे 
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.morgan} onChange={handleChange} name='morgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="morganother"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
+                    </div>
+
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            या संस्थेत काम करण्यास इच्छुक आहे
+                                
+                            </label>
+                        </div>
+                            <div className="md:w-2/3">
+                            
+                            <select value={form.miorgan} onChange={handleChange} name='miorgan' placeholder='Select..'>
+                                <option value="Select">Select..</option>
+                                <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
+                                <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
+                                <option value="Hindu Mahasabha">हिंदू महासभा</option>
+                                <option value="ISKCON">ISKCON</option>
+                                <option value="Bajrang Dal">बजरंग दल</option>
+                                <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
+                                <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
+                                <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                
+                                <option value="None">None</option>
+                            </select>
+                            <p className="py-2 text-sm text-gray-600">If Other : </p>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="miotherorgan"  placeholder='Other' onChange={handleChange}/>
+                            
+                        </div>
+
                     </div>
                     
                     
@@ -778,109 +1657,7 @@ const submitForm = (e) => {
                 </form>
 
             </div> 
-            {/* <!--/Card--> */}
-
-            {/* <!--divider-->/ */}
-            {/* <hr className="bg-gray-300 my-3"/>
-            {/* <!--Title--> */}
-            {/* <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Section 4</h2> */}
-
-            {/* <!--Card--> */}
-            {/* <div id='section4' className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-                <form>
-
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-radio">
-                                Radio Buttons
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <div className="mt-2">
-                                <label className="inline-flex items-center">
-                                    <input type="radio" className="form-radio text-indigo-600" name="radioOption" value="A"/>
-                                    <span className="ml-2">Radio A</span>
-                                </label>
-                                <label className="inline-flex items-center ml-6">
-                                    <input type="radio" className="form-radio" name="radioOption" value="B"/>
-                                    <span className="ml-2">Radio B</span>
-                                </label>
-                            </div>
-                            <p className="py-2 text-sm text-gray-600">add notes about populating the field</p>
-                        </div>
-                    </div>
-
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-checkbox">
-                                Checkboxes
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <div>
-                                <label className="inline-flex items-center">
-                                    <input type="checkbox" className="form-checkbox text-indigo-600" checked/>
-                                    <span className="ml-2">Option 1</span>
-                                </label>
-                            </div>
-                            <div>
-                                <label className="inline-flex items-center">
-                                    <input type="checkbox" className="form-checkbox text-green-500" checked/>
-                                    <span className="ml-2">Option 2</span>
-                                </label>
-                            </div>
-                            <div>
-                                <label className="inline-flex items-center">
-                                    <input type="checkbox" className="form-checkbox text-pink-600" checked/>
-                                    <span className="ml-2">Option 3</span>
-                                </label>
-                            </div>
-                            <p className="py-2 text-sm text-gray-600">add notes about populating the field</p>
-                        </div>
-                    </div>
-
-                    <div className="md:flex md:items-center">
-                        <div className="md:w-1/3"></div>
-                        <div className="md:w-2/3">
-                            <button className="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                Save
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-            </div> */}
-            {/* <!--/Card--> */}
-
-            {/* <!--divider--> */}
-            {/* <hr className="bg-gray-300 my-3"/> */}
-            {/* <!--Title--> */}
-            {/* <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Section 5</h2> */}
-
-            {/* <!--Card--> */}
-            {/* <div id='section5' className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-                <blockquote className="border-l-4 border-yellow-600 italic my-4 pl-8 md:pl-12">Final confirmation disclaimer message etc</blockquote>
-
-                <div className="pt-8">
-
-                    <button className="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mr-4" type="button">
-                        Save
-                    </button>
-
-                    <button className="shadow bg-yellow-100 hover:bg-yellow-200 focus:shadow-outline focus:outline-none text-gray-700 font-bold py-2 px-4 rounded mr-4" type="button">
-                        Additional Action
-                    </button>
-
-                    <button className="shadow bg-yellow-100 hover:bg-yellow-200 focus:shadow-outline focus:outline-none text-gray-700 font-bold py-2 px-4 rounded" type="button">
-                        Additional Action
-                    </button>
-
-                </div>
-
-            </div>  */}
-            {/* <!--/Card--> */}
+            
 
         </div>
 

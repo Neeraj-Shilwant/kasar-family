@@ -55,32 +55,32 @@ const Navbarmenu = () => {
         </Link>
       </div>
       </NavbarBrand >
-      <NavbarItem
+      {/* <NavbarItem
         className="menu-button block sm:hidden cursor-pointer"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
-      </NavbarItem>
-      <NavbarContent className={`menu ${menuOpen ? 'active' : ''} menu-button block hidden sm:flex gap-4`} justify="center" style={{paddingRight:"7%"}}>
+      </NavbarItem> */}
+      {/* <NavbarContent className={`menu ${menuOpen ? 'active' : ''} menu-button block hidden sm:flex gap-4`} justify="center" style={{paddingRight:"7%"}}>
         <NavbarItem>
           <Link color="foreground" href="/" className='flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:underline font-extrabold font-sans'>
             Family Details
           </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
+        </NavbarItem> */}
+        {/* <NavbarItem isActive>
           <Link href="/Parent" aria-current="page" className='flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:underline font-extrabold font-sans'>
             Parent Details
           </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
+        </NavbarItem> */}
+        {/* <NavbarItem isActive>
           <Link href="/Getmarried" aria-current="page" className='flex items-center text-yellow-600 text-base xl:text-xl no-underline hover:underline font-extrabold font-sans'>
             Get Married
           </Link>
         </NavbarItem>
         
-      </NavbarContent>
+      </NavbarContent> */}
       
     </Navbar>
 
