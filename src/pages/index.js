@@ -625,7 +625,7 @@ const submitForm = (e) => {
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.organ} onChange={handleChange} name='organ' placeholder='Select..'>
+                            <select value={form.organ} onChange={handleChange} name='organ' placeholder='Select..' >
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -635,6 +635,18 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
                                 
                                 <option value="None">None</option>
                             </select>
@@ -664,7 +676,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -871,7 +896,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -900,7 +938,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1084,7 +1135,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1113,7 +1177,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1297,7 +1374,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1326,7 +1416,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1504,7 +1607,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1533,7 +1649,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1683,7 +1812,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1712,7 +1854,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1849,7 +2004,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
@@ -1878,7 +2046,20 @@ const submitForm = (e) => {
                                 <option value="Ramakrishna Mission">रामकृष्ण मिशन</option>
                                 <option value="Arya Samaj">Arya Samaj(आर्य समाज)</option>
                                 <option value="Akhil Bhartiya Akhara Parishad">अखिल भारतीय आखाडा परिषद</option>
-                                
+                                <option value="Baal Sanskar kendra Mandir">बाल संस्कार केंद्र मंदिरातून.</option>
+                                <option value="Mandir Aarti Sankya Vadhavne">मंदिराचे दररोजच्या आरतीचे भाविक संख्या वाढविणे.</option>
+                                <option value="Mandir Sevak Sankhya vadhavne">मंदिराच्या सेवक ची संख्या वाढविणे.</option>
+                                <option value="Mandir Funding Collection"> मंदिराच्या फंडिंग जमा करण्यावर काम करणे. </option>
+                                <option value="Mandir Hindu Book Library">मंदिरात हिंदू धर्मग्रंथाची पुस्तकालय.</option>
+                                <option value="Ek gaon ek gowshala">एक गाव एक गोशाळा.</option>
+                                <option value="Religion Convertion Virodh">धर्मांतरण विरोध</option>
+                                <option value="Love Jihad Virodh">लव जिहाद विरोध</option>
+                                <option value="Ghar ghar Durga">घर घर दुर्गा शस्त्र प्रशिक्षण.</option>
+                                <option value="Ghar ghar Bajrangi">घर घर बजरंगी शस्त्र प्रशिक्षण.</option>
+                                <option value="Shashtra Classes">शास्त्राचे पठण आणि क्लास.</option>
+                                <option value="Meditation Classes">मेडिटेशन ध्यान साधना वर प्रभुत्व.</option>
+
+
                                 <option value="None">None</option>
                             </select>
                             <p className="py-2 text-sm text-gray-600">If Other : </p>
