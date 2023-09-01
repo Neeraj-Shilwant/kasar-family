@@ -8,6 +8,16 @@
 #menu-content{
   top: 6rem;
 }
+/* mobile view */
+@media (max-width: 767px) {
+  .familydetailstop {
+    padding-top: 4rem;
+  }
+  
+}
+.familydetailstop{
+  padding-top: 2rem;
+}
 
 .requiredStar {
   color: red; /* Set the color of the star */

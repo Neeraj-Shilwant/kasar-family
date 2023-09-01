@@ -451,7 +451,7 @@ const submitForm = (e) => {
     >
       
       
-    <div className='container justify-center w-full flex flex-wrap mx-auto px-2 pt-4 '>
+    <div className={`container justify-center w-full flex flex-wrap mx-auto px-2 ${style.familydetailstop}`}>
       
         <div className="w-full lg:w-4/5 p-4 lg:px-8">
 
@@ -472,7 +472,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
                                 <span className={style.requiredStar}>*</span>
 
@@ -485,7 +485,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Email Id
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -499,7 +499,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Education / शिक्षण
                                 <span className={style.requiredStar}>*</span>
 
@@ -513,7 +513,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
 
@@ -539,7 +539,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
 
@@ -563,7 +563,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Address / पत्ता
                                 <span className={style.requiredStar}>*</span>
 
@@ -578,7 +578,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Google location Link
                                 <span className={style.requiredStar}>*</span>
 
@@ -592,7 +592,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
@@ -605,7 +605,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 House (Own or Rent)
                                 <span className={style.requiredStar}>*</span>
 
@@ -618,14 +618,14 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.organ} onChange={handleChange} name='organ' placeholder='Select..' >
+                            <select style={{width:"100%"}} value={form.organ} onChange={handleChange} name='organ' placeholder='Select..' >
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -659,14 +659,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.iorgan} onChange={handleChange} name='iorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.iorgan} onChange={handleChange} name='iorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -700,7 +700,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Reference Name 1 
                                 <span className={style.requiredStar}>*</span>
 
@@ -713,7 +713,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Contact number 1
                                 <span className={style.requiredStar}>*</span>
 
@@ -727,7 +727,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Reference Name 2 
                                 <span className={style.requiredStar}>*</span>
 
@@ -740,7 +740,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Contact Number 2 
                                 <span className={style.requiredStar}>*</span>
 
@@ -773,7 +773,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
                                 <span className={style.requiredStar}>*</span>
 
@@ -786,7 +786,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Education / शिक्षण
                                 <span className={style.requiredStar}>*</span>
 
@@ -800,7 +800,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
 
@@ -825,7 +825,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
 
@@ -852,7 +852,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
@@ -866,7 +866,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 <span className={style.requiredStar}>*</span>
 
@@ -879,14 +879,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.worgan} onChange={handleChange} name='worgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.worgan} onChange={handleChange} name='worgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -921,14 +921,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.wiorgan} onChange={handleChange} name='wiorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.wiorgan} onChange={handleChange} name='wiorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -981,7 +981,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
 
                             </label>
@@ -992,7 +992,7 @@ const submitForm = (e) => {
                     </div>
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1012,7 +1012,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Education / शिक्षण
 
                             </label>
@@ -1025,7 +1025,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 
 
@@ -1050,7 +1050,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
 
                             </label>
@@ -1072,7 +1072,7 @@ const submitForm = (e) => {
                     </div>
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1092,7 +1092,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1106,7 +1106,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1118,14 +1118,14 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.corgan} onChange={handleChange} name='corgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.corgan} onChange={handleChange} name='corgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1160,14 +1160,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.ciorgan} onChange={handleChange} name='ciorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.ciorgan} onChange={handleChange} name='ciorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1221,7 +1221,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
 
                             </label>
@@ -1232,7 +1232,7 @@ const submitForm = (e) => {
                     </div>
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1250,7 +1250,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Education / शिक्षण
 
                             </label>
@@ -1263,7 +1263,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 
 
@@ -1287,7 +1287,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
 
                             </label>
@@ -1310,7 +1310,7 @@ const submitForm = (e) => {
                     
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1329,7 +1329,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1343,7 +1343,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1357,14 +1357,14 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.c2organ} onChange={handleChange} name='c2organ' placeholder='Select..'>
+                            <select  style={{width:"100%"}} value={form.c2organ} onChange={handleChange} name='c2organ' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1399,14 +1399,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.c2iorgan} onChange={handleChange} name='c2iorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.c2iorgan} onChange={handleChange} name='c2iorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1454,7 +1454,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
 
                             </label>
@@ -1465,7 +1465,7 @@ const submitForm = (e) => {
                     </div>
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1483,7 +1483,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Education / शिक्षण
 
                             </label>
@@ -1496,7 +1496,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 
 
@@ -1520,7 +1520,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
 
                             </label>
@@ -1543,7 +1543,7 @@ const submitForm = (e) => {
                     
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1562,7 +1562,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1576,7 +1576,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1590,14 +1590,14 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.c3organ} onChange={handleChange} name='c3organ' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.c3organ} onChange={handleChange} name='c3organ' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1632,14 +1632,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.c3iorgan} onChange={handleChange} name='c3iorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.c3iorgan} onChange={handleChange} name='c3iorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1708,7 +1708,7 @@ const submitForm = (e) => {
                     
                     <div class="md:flex mb-6">
                         <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Father Name / वडिलांचे नाव
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1720,7 +1720,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
 
@@ -1745,7 +1745,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1769,7 +1769,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 <span className={style.requiredStar}>*</span>
                              </label>
@@ -1780,7 +1780,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
                                 <span className={style.requiredStar}>*</span>
@@ -1795,14 +1795,14 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.forgan} onChange={handleChange} name='forgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.forgan} onChange={handleChange} name='forgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1837,14 +1837,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.fiorgan} onChange={handleChange} name='fiorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.fiorgan} onChange={handleChange} name='fiorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -1898,7 +1898,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Mother Name / आईचे नाव
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1913,7 +1913,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group / रक्त गट
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1937,7 +1937,7 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Date of Birth / जन्मतारीख
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1961,7 +1961,7 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 <span className={style.requiredStar}>*</span>
 
@@ -1973,7 +1973,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर        
                                 <span className={style.requiredStar}>*</span>
 
@@ -1987,14 +1987,14 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत सक्रिय कार्यरत आहे 
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.morgan} onChange={handleChange} name='morgan' placeholder='Select..'>
+                            <select  style={{width:"100%"}} value={form.morgan} onChange={handleChange} name='morgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -2029,14 +2029,14 @@ const submitForm = (e) => {
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                             या संघटनेसोबत काम करण्यास इच्छुक आहे
                                 
                             </label>
                         </div>
                             <div className="md:w-2/3">
                             
-                            <select value={form.miorgan} onChange={handleChange} name='miorgan' placeholder='Select..'>
+                            <select style={{width:"100%"}} value={form.miorgan} onChange={handleChange} name='miorgan' placeholder='Select..'>
                                 <option value="Select">Select..</option>
                                 <option value="RSS (Rashtriya Swayamsevak Sangh)">RSS (राष्ट्रीय स्वयंसेवक संघ)</option>
                                 <option value="VHP (Vishva Hindu Parishad)">VHP (विश्व हिंदू परिषद)</option>
@@ -2070,7 +2070,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 विधवा व्यक्तीची माहिती
                                 
 
@@ -2083,7 +2083,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                             अपंग व्यक्तींची माहिती
                                 
 
@@ -2096,7 +2096,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                             इतर व्यक्तीची माहिती
                                 
 

@@ -1,0 +1,21 @@
+/* Navbar menu */
+
+/* mobile view */
+@media (max-width: 767px) {
+    .userMenu {
+      padding-top: 7px;
+      left:0;
+     
+    }
+    .userButton{
+      padding-top: 10px;
+    }
+  }
+  /* desktop view */
+  @media (min-width: 767px) {
+    .userMenu {
+      
+      right: 0;
+     
+    }
+  }
