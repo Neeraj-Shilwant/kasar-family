@@ -2067,13 +2067,27 @@ const submitForm = (e) => {
                             
                         </div>
 
-                    </div>
+                    </div> 
+                    
+                </form>
+
+            </div> 
+            {/* child 2 */}
+            <hr className="bg-gray-300 my-3"/>
+            {/* <!--Title--> */}
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Other Details</h2>
+
+
+            {/* <!--Card--> */}
+            
+             <div   className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+             
+             <form  onSubmit={submitForm} >
+
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                विधवा व्यक्तीची माहिती
-                                
-
+                                विधवा व्यक्तीची माहिती 
                             </label>
                         </div>
                         <div className="md:w-2/3">
