@@ -993,7 +993,6 @@ const submitForm = async (e) => {
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name / पूर्ण नाव
-
                             </label>
                         </div>
                         <div className="md:w-2/3">
