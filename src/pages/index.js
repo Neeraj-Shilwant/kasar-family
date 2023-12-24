@@ -602,7 +602,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
@@ -862,7 +862,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                 <span className={style.requiredStar}>*</span>
 
@@ -876,7 +876,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 <span className={style.requiredStar}>*</span>
 
@@ -1001,7 +1001,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1081,7 +1081,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1101,7 +1101,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1115,7 +1115,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1241,7 +1241,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1319,7 +1319,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1338,7 +1338,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1352,7 +1352,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1474,7 +1474,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1552,7 +1552,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1571,7 +1571,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
 
@@ -1585,7 +1585,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Profession / व्यवसाय
                                 
 
@@ -1717,7 +1717,7 @@ const submitForm = async (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-radio">
                                 Father Name / वडिलांचे नाव
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -1789,7 +1789,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर
                                
                                 <span className={style.requiredStar}>*</span>
@@ -1982,7 +1982,7 @@ const submitForm = async (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Mobile Number / मोबाईल नंबर        
                                 <span className={style.requiredStar}>*</span>
 
