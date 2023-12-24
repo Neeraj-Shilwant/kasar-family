@@ -8,9 +8,7 @@ import mongoose from "mongoose";
 
 export default async function POST(req){
   const {newRow} = await req.body;
- 
-  
-  
+
   try {
     await connectDB();
     
