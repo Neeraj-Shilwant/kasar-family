@@ -20,4 +20,7 @@ module.exports = {
   env: {
     GOOGLE_SERVICE_PRIVATE_KEY: process.env.GOOGLE_SERVICE_PRIVATE_KEY,
   },
+  // api: {
+  //   runtime: "edge",
+  // }
 };

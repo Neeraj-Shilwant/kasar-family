@@ -48,17 +48,17 @@ const appendSpreadsheet = async (row) => {
   }
 };
 
-const submitForm = (e) => {
+const submitForm = async (e) => {
   e.preventDefault();
 
   if (
-    
-    form.fullname !== '' &&
-    form.blood !== '' &&
-    form.education !== '' &&
-    form.age !== '' &&
-    form.gender !== '' &&
-    form.biodata !== '' 
+    form.fullname !== ''
+    // form.fullname !== '' &&
+    // form.blood !== '' &&
+    // form.education !== '' 
+    // form.age !== '' &&
+    // form.gender !== '' &&
+    // form.biodata !== '' 
     
   ) {
     // Data add for append
@@ -69,16 +69,37 @@ const submitForm = (e) => {
       Bloodgroup:form.blood,
       Education:form.education,
       Age:form.age,
-      Gender:form.gender,
-      Biodataimg:form.biodata
+      
     
     };
 
-    appendSpreadsheet(newRow);
+    // 
+
+    // appendSpreadsheet(newRow);
     // Perform your form submission logic here
+
+
+    //Mongo connection
+    const res =  await fetch("api/route",{
+      method:"POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body:JSON.stringify({newRow}),
+    });
+
+
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
-    setForm(initialvalues);
+    // setForm(initialvalues);
+    console.log("Fullname :",form.fullname);
+    
+    
+    
+    const {msg} = await res.json();
+    console.log("server error : ",msg);
+    setservererror(msg);
+    console.log("server error : ",servererror)
   }
   else{
     setErrorMessage('Check the mandatory fields.');
@@ -93,20 +114,36 @@ const submitForm = (e) => {
     blood:'',
     education:'',
     age:'',
-    gender:'',
-    biodata:''
+    
     
     
   };
   const [form, setForm] = useState(initialvalues);
-
+  // const [fullname,setfullname] = useState('');
+  // const [education,seteducation] = useState('');
+  // const [blood,setblood] = useState('');
+  // const [age,setage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  const[servererror,setservererror] = useState([]);
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    let value = e.target.value;
+    let name = e.target.name;
+ 
+    setForm((prevalue) => {
+      return {
+        ...prevalue,   // Spread Operator               
+        [name]: value
+      }
+    })
+
+
+    // setfullname(e.target.value);
+    // seteducation(e.target.value);
+    // setblood(e.target.value);
+    // setage(e.target.value);
+    
    
   };
 
@@ -154,20 +191,20 @@ const submitForm = (e) => {
                     
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                 Full Name
                                 <span className={style.requiredStar}>*</span>
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="fullname"  placeholder='full-name' onChange={handleChange}/>
+                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" value={form.fullname}  name ="fullname"  placeholder='full-name' onChange={handleChange}/>
                         </div>
                     </div>
                     
 
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
                                 Blood group
                                 <span className={style.requiredStar}>*</span>
 
@@ -190,7 +227,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Education
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -203,7 +240,7 @@ const submitForm = (e) => {
                     </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Age
                                 <span className={style.requiredStar}>*</span>
                             </label>
@@ -216,9 +253,9 @@ const submitForm = (e) => {
                     </div>
                     
                     
-                    <div className="md:flex mb-6">
+                    {/* <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                 Gender
                                 <span className={style.requiredStar}>*</span>
                              </label>
@@ -232,10 +269,10 @@ const submitForm = (e) => {
                                 
                             </select>
                         </div>
-                    </div>
-                    <div className="md:flex mb-6">
+                    </div> */}
+                    {/* <div className="md:flex mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
                                 Bio Data pdf
                                
                                 <span className={style.requiredStar}>*</span>
@@ -246,7 +283,7 @@ const submitForm = (e) => {
                             <p className="py-2 text-sm text-gray-600">Also Self Hd image</p>
 
                         </div>
-                    </div>
+                    </div> */}
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3">
                         

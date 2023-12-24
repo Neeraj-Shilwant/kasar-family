@@ -51,12 +51,12 @@ const appendSpreadsheet = async (row) => {
   }
 };
 
-const submitForm = (e) => {
+const submitForm = async (e) => {
   e.preventDefault();
 
   if (
     email !== '' &&
-    setMailerror === '' &&
+    // setMailerror === '' &&
     form.fullname !== '' &&
     form.education !== '' &&
     form.blood !== '' &&
@@ -67,7 +67,7 @@ const submitForm = (e) => {
     formmob.mobile !== '' &&
     // setmobErrors.mobile === '' && 
     form.house !== '' &&
-    form.house !== '' &&
+    
     form.ref1 !== '' && 
     form.ref2 !== '' &&
     formmob.con1 !== '' &&
@@ -217,6 +217,16 @@ const submitForm = (e) => {
     };
 
     appendSpreadsheet(newRow);
+
+    //Mongo connection
+    const res =  await fetch("api/route",{
+        method:"POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body:JSON.stringify({newRow}),
+      });
+
     // Perform your form submission logic here
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
@@ -969,7 +979,7 @@ const submitForm = (e) => {
             {/* <!--divider--> */}
             <hr className="bg-gray-300 my-3"/>
             {/* <!--Title--> */}
-            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Children</h2>
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Child</h2>
             <p className="py-2 text-sm text-gray-600" style={{color:"red"}}>Note : If Not applicable leave empty</p>
 
 
@@ -990,9 +1000,9 @@ const submitForm = (e) => {
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="cfullname"  placeholder='child-full-name' onChange={handleChange}/>
                         </div>
                     </div>
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1070,9 +1080,9 @@ const submitForm = (e) => {
                             minDate={new Date('1900-01-01')}/>
                         </div>
                     </div>
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1209,7 +1219,7 @@ const submitForm = (e) => {
             {/* child 2 */}
             <hr className="bg-gray-300 my-3"/>
             {/* <!--Title--> */}
-            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Children 2</h2>
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Child 2</h2>
             <p className="py-2 text-sm text-gray-600" style={{color:"red"}}>Note : If Not applicable leave empty</p>
 
 
@@ -1230,9 +1240,9 @@ const submitForm = (e) => {
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c2fullname"  placeholder='child-full-name' onChange={handleChange}/>
                         </div>
                     </div>
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1308,9 +1318,9 @@ const submitForm = (e) => {
                         </div>
                     </div>
                     
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1444,7 +1454,7 @@ const submitForm = (e) => {
             {/* child 2 */}
             <hr className="bg-gray-300 my-3"/>
             {/* <!--Title--> */}
-            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Children 3</h2>
+            <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Child 3</h2>
             <p className="py-2 text-sm text-gray-600" style={{color:"red"}}>Note : If Not applicable leave empty</p>
             {/* <!--Card--> */}
             
@@ -1463,9 +1473,9 @@ const submitForm = (e) => {
                             <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="c3fullname"  placeholder='child-full-name' onChange={handleChange}/>
                         </div>
                     </div>
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Gender / लिंग
 
                             </label>
@@ -1541,9 +1551,9 @@ const submitForm = (e) => {
                         </div>
                     </div>
                     
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                             लग्नासाठी स्थळ बघणे ?
 
                             </label>
@@ -1706,9 +1716,9 @@ const submitForm = (e) => {
              <form  onSubmit={submitForm} >
                     
                     
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
+                    <div className="md:flex mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-radio">
                                 Father Name / वडिलांचे नाव
                                 <span className={style.requiredStar}>*</span>
                             </label>
