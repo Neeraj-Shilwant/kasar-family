@@ -92,14 +92,13 @@ const submitForm = async (e) => {
     setSuccessMessage('Form submitted successfully!');
     setErrorMessage('');
     // setForm(initialvalues);
-    console.log("Fullname :",form.fullname);
+   
     
     
     
-    const {msg} = await res.json();
-    console.log("server error : ",msg);
-    setservererror(msg);
-    console.log("server error : ",servererror)
+    
+    
+    
   }
   else{
     setErrorMessage('Check the mandatory fields.');
@@ -126,7 +125,7 @@ const submitForm = async (e) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  const[servererror,setservererror] = useState([]);
+  
   const handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
