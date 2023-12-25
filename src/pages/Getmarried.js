@@ -5,13 +5,16 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import {JWT}  from 'google-auth-library'
 import Head from 'next/head';
 import style from'@/styles/style.module.css'
-
+import{ BeatLoader,DotLoader,BounceLoader} from "react-spinners";
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  
+  useEffect(() => {
+                    //spinner refresh 
+  setTimeout(()=>setrefresh(false),3000);
+}, [])
 
 // Config variables
 const SPREADSHEET_ID = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
@@ -50,7 +53,7 @@ const appendSpreadsheet = async (row) => {
 
 const submitForm = async (e) => {
   e.preventDefault();
-
+  setloading(true);
   if (
     form.fullname !== ''
     // form.fullname !== '' &&
@@ -78,7 +81,8 @@ const submitForm = async (e) => {
     // appendSpreadsheet(newRow);
     // Perform your form submission logic here
 
-
+    
+    
     //Mongo connection
     const res =  await fetch("api/route",{
       method:"POST",
@@ -87,22 +91,28 @@ const submitForm = async (e) => {
       },
       body:JSON.stringify({newRow}),
     });
-
-
-    setSuccessMessage('Form submitted successfully!');
+    setTimeout(() => {
+      setSuccessMessage('Form submitted successfully!'); // Hide the loader
+      setloading(false);
+    }, 5000);
+    
+    
+    
+    setForm(initialvalues);
     setErrorMessage('');
-    // setForm(initialvalues);
-   
     
     
-    
-    
-    
-    
+ 
   }
   else{
-    setErrorMessage('Check the mandatory fields.');
+    setTimeout(() => {
+      setErrorMessage('Check the mandatory fields.'); // Hide the loader
+      setloading(false);
+    }, 5000);
+    
+    
     setSuccessMessage('');
+   
   }
 };
 
@@ -124,12 +134,15 @@ const submitForm = async (e) => {
   // const [age,setage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-
+  const [loading, setloading] = useState(false);
+const [refresh, setrefresh] = useState(true);
   
+
   const handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
- 
+    
+    
     setForm((prevalue) => {
       return {
         ...prevalue,   // Spread Operator               
@@ -160,12 +173,18 @@ const submitForm = async (e) => {
    
     </Head>
     
-    <main
+    <main 
       className={`flex min-h-screen flex-col items-center justify-between  p-0 md:p-24 ${inter.className}`}
     >
       
     <div className='container justify-center w-full flex flex-wrap mx-auto px-2 pt-4 '>
-      
+    {refresh ? (<div className='justify-center' style={{
+        display: 'flex',
+        paddingTop:'7rem'
+      }}>
+    <BounceLoader color={'#F79F3A'} loading={refresh} size={45} />
+    </div>
+    ) : 
         <div className="w-full lg:w-4/5 p-4 lg:px-8">
 
             {/* <!--Title--> */}
@@ -288,11 +307,18 @@ const submitForm = async (e) => {
                         
                         </div>
                         <div className="md:w-2/3">
+                          {loading && <BeatLoader
+                                color={'#F79F3A'}
+                                loading={loading}
+                                size={20}
+                              />}
                         {errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
                         {successMessage && <p className={style.successMessage}>{successMessage}</p>}
+                              
                             <button className="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
                                 Save
                             </button>
+                            
                         </div>
                     </div>
                     
@@ -306,7 +332,7 @@ const submitForm = async (e) => {
             
 
         </div>
-
+      }
     </div>
    
     <script  type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" async/>

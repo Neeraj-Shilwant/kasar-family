@@ -29,11 +29,11 @@ export default async function POST(req){
       Data:newRow
       });
 
-    // return NextResponse.json({
-    //   msg:["msg sent"],
-    //   success:true,
-    //   data: createddata
-    // });
+    return NextResponse.json({
+      msg:["msg sent"],
+      success:true,
+      data: createddata
+    });
   } catch (error) {
     if(error instanceof mongoose.Error.ValidationError){
       let errorlist=[];

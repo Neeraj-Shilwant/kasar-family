@@ -8,13 +8,17 @@ import style from'@/styles/style.module.css'
 
 import DatePicker from 'react-datepicker'; 
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from 'date-fns';
-import Link from 'next/link';
+
+
+import{ BeatLoader,BounceLoader} from "react-spinners";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  
+    useEffect(() => {
+        //spinner refresh 
+    setTimeout(()=>setrefresh(false),3000);
+    }, [])
 
 // Config variables
 const SPREADSHEET_ID = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
@@ -53,7 +57,7 @@ const appendSpreadsheet = async (row) => {
 
 const submitForm = async (e) => {
   e.preventDefault();
-
+  setloading(true);
   if (
     email !== '' &&
     // setMailerror === '' &&
@@ -227,8 +231,12 @@ const submitForm = async (e) => {
         body:JSON.stringify({newRow}),
       });
 
+      setTimeout(() => {
+        setSuccessMessage('Form submitted successfully!'); // Hide the loader
+        setloading(false);
+      }, 5000);
     // Perform your form submission logic here
-    setSuccessMessage('Form submitted successfully!');
+   
     setErrorMessage('');
     setForm(initialvalues);
     setFormState({dob: null,
@@ -255,10 +263,13 @@ const submitForm = async (e) => {
     // setnext(true);
   }
   else{
-    console.log("error")
-    setErrorMessage('Check the mandatory fields.');
+    setTimeout(() => {
+        setErrorMessage('Check the mandatory fields.'); // Hide the loader
+        setloading(false);
+      }, 5000);
+    
     setSuccessMessage('');
-    // setnext(false);
+   
   }
 };
     const initialvalues = {
@@ -358,6 +369,9 @@ const submitForm = async (e) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+  const [loading, setloading] = useState(false);
+  const [refresh, setrefresh] = useState(true);
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -455,14 +469,22 @@ const submitForm = async (e) => {
     <title>KASAR FAMILY</title>
    
     </Head>
-    
+    {refresh ? (<div className='justify-center' style={{
+        display: 'flex',
+        paddingTop:'14rem',
+        paddingBottom:'14rem'
+      }}>
+    <BounceLoader color={'#F79F3A'} loading={refresh} size={45} />
+    </div>
+    ) :
     <main
       className={`flex min-h-screen flex-col items-center justify-between  p-0 md:p-24 ${inter.className}`}
     >
-      
+        
+     
       
     <div className={`container justify-center w-full flex flex-wrap mx-auto px-2 ${style.familydetailstop}`}>
-      
+    
         <div className="w-full lg:w-4/5 p-4 lg:px-8">
 
             {/* <!--Title--> */}
@@ -1687,9 +1709,10 @@ const submitForm = async (e) => {
         </div>
 
     </div>
+
+
+
     
-    
-    {/* parent section */}
     <div className='container justify-center w-full flex flex-wrap mx-auto px-2 pt-4 '>
       
         <div className="w-full lg:w-4/5 p-4 lg:px-8">
@@ -2136,6 +2159,11 @@ const submitForm = async (e) => {
                        
                         </div>
                         <div className="md:w-2/3">
+                            {loading && <BeatLoader
+                                color={'#F79F3A'}
+                                loading={loading}
+                                size={20}
+                              />}
                         {errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
                         {successMessage && <p className={style.successMessage}>{successMessage}</p>}
                             <button className="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
@@ -2151,14 +2179,16 @@ const submitForm = async (e) => {
         </div>
 
     </div>
-   
+    
+    
     <script  type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" async/>
     <script  type="text/javascript" src="src/js/formfunc.js" async/>
 
     
-    
-    
+
+                            
     </main>
+}
     
     </>
   )
