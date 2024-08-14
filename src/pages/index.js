@@ -228,12 +228,23 @@ export default function Home() {
             appendSpreadsheet(newRow);
 
             //Mongo connection
+
+            //send post request with data
             const res = await fetch("api/route", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({ newRow }),
+            });
+            
+            //Send data to hello api for email response sending
+            const emailresponse = await fetch("api/hello",{
+                method:"POST",
+                headers:{
+                    "Content-type": "application/json",
+                },
+                body:JSON.stringify({Name:form.fullname,Email: email,Mobilenumber: formmob.mobile}),
             });
 
             setTimeout(() => {

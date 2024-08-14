@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-// import connectDB from "../lib/db";
-// import infomodel from "../lib/model/kasar-data";
+
 import mongoose ,{Schema}from "mongoose";
 
 
@@ -8,13 +7,10 @@ import mongoose ,{Schema}from "mongoose";
 export default async function POST(req){
   const {newRow} = await req.body;
   const infoSchema = new Schema({
-    
-
     Data: {
         type: Object,
         required: [true]
     }
-   
   })
   const infomodel = mongoose.models.kasar ?? mongoose.model("kasar", infoSchema);
 
@@ -48,33 +44,3 @@ export default async function POST(req){
   }
 }
 
-// export default async function handler(req, res) {
-//   if (req.method === 'POST') {
-//     // Process a POST request
-//     const { fullname} = req.body;
-//     console.log("request data fetch to route :",fullname);
-//   try {
-//     await connectDB();
-//     await infomodel.insertOne({ fullname }).then((data)=>{
-//       console.log("data :",data);
-//       res.status(200).json({ message: 'User added successfully' });
-//     })
-
-    
-//   } catch (err) {
-//     if (err instanceof mongoose.Error.ValidationError) {
-//       let errorList = [];
-//       for (let e in err.errors) {
-//         errorList.push(err.errors[e].message);
-//       }
-//       console.log(errorList);
-//       return NextResponse.json({ msg: errorList });
-//     } else {
-//       return NextResponse.json({ msg: ["Unable to send message."] });
-//     }
-//   }
-//   } else {
-//     // Handle any other HTTP method
-//     console.log("Something went wrong");
-//   }
-// }

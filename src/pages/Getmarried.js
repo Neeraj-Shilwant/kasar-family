@@ -55,26 +55,21 @@ const submitForm = async (e) => {
   e.preventDefault();
   setloading(true);
   if (
-    form.fullname !== ''
-    // form.fullname !== '' &&
-    // form.blood !== '' &&
-    // form.education !== '' 
-    // form.age !== '' &&
-    // form.gender !== '' &&
-    // form.biodata !== '' 
+    form.fullname !== '' && 
+    form.email !== ''
     
   ) {
     // Data add for append
-    const newRow = {
+    // const newRow = {
         
       
-      FullName: form.fullname,
-      Bloodgroup:form.blood,
-      Education:form.education,
-      Age:form.age,
+    //   FullName: form.fullname,
+    //   Bloodgroup:form.blood,
+    //   Education:form.education,
+    //   Age:form.age,
       
     
-    };
+    // };
 
     // 
 
@@ -84,13 +79,22 @@ const submitForm = async (e) => {
     
     
     //Mongo connection
-    const res =  await fetch("api/route",{
+    // const res =  await fetch("api/route",{
+    //   method:"POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body:JSON.stringify({newRow}),
+    // });
+
+    const emailresponse = await fetch("api/hello",{
       method:"POST",
-      headers: {
-        "Content-type": "application/json",
+      headers:{
+          "Content-type": "application/json",
       },
-      body:JSON.stringify({newRow}),
+      body:JSON.stringify(form.email),
     });
+
     setTimeout(() => {
       setSuccessMessage('Form submitted successfully!'); // Hide the loader
       setloading(false);
@@ -120,22 +124,18 @@ const submitForm = async (e) => {
    
     //primary key Fullname
     fullname:'',
-    blood:'',
-    education:'',
-    age:'',
+    email:'',
+    
     
     
     
   };
   const [form, setForm] = useState(initialvalues);
-  // const [fullname,setfullname] = useState('');
-  // const [education,seteducation] = useState('');
-  // const [blood,setblood] = useState('');
-  // const [age,setage] = useState('');
+  
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setloading] = useState(false);
-const [refresh, setrefresh] = useState(true);
+  const [refresh, setrefresh] = useState(true);
   
 
   const handleChange = (e) => {
@@ -149,14 +149,7 @@ const [refresh, setrefresh] = useState(true);
         [name]: value
       }
     })
-
-
-    // setfullname(e.target.value);
-    // seteducation(e.target.value);
-    // setblood(e.target.value);
-    // setage(e.target.value);
-    
-   
+ 
   };
 
   
@@ -219,89 +212,20 @@ const [refresh, setrefresh] = useState(true);
                         </div>
                     </div>
                     
-
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
-                                Blood group
-                                <span className={style.requiredStar}>*</span>
-
-                            </label>
-                        </div>
-                            <div className="md:w-2/3">
-                            <select value={form.blood} onChange={handleChange} name='blood' placeholder='Select..'>
-                                <option value="Select">Select..</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                            </select>
-                        </div>
-
-                    </div>
                     <div className="md:flex mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Education
+                                Email
                                 <span className={style.requiredStar}>*</span>
                             </label>
                         </div>
                         <div className="md:w-2/3">
 
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="education"  placeholder='education' onChange={handleChange}/>
-
-                        </div>
-                    </div>
-                    <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Age
-                                <span className={style.requiredStar}>*</span>
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="number" name ="age"  placeholder='age' onChange={handleChange}/>
+                            <input value={form.email} className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name ="email"  placeholder='education' onChange={handleChange}/>
 
                         </div>
                     </div>
                     
-                    
-                    {/* <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                Gender
-                                <span className={style.requiredStar}>*</span>
-                             </label>
-                        </div>
-                        <div className="md:w-2/3">
-                        <select value={form.gender} onChange={handleChange} name='gender' placeholder='Select..'>
-                                <option value="Select">Select..</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="prefer not to say">Prefer Not to say</option>
-                                
-                            </select>
-                        </div>
-                    </div> */}
-                    {/* <div className="md:flex mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlhtmlFor="my-textarea">
-                                Bio Data pdf
-                               
-                                <span className={style.requiredStar}>*</span>
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text"  name ="biodata"  placeholder='google-drive-link' onChange={handleChange}/>
-                            <p className="py-2 text-sm text-gray-600">Also Self Hd image</p>
-
-                        </div>
-                    </div> */}
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3">
                         
