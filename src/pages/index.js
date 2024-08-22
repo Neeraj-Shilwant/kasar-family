@@ -12,17 +12,38 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { BeatLoader, BounceLoader } from "react-spinners";
 
+import { useRouter } from 'next/router';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-
+    const router = useRouter();
+    const { verified, decodedemail } = router.query;
+    const [emailstatus, setemailStatus] = useState(false);
+   
+    const [email, setEmail] = useState('');
+    
 
     useEffect(() => {
         //spinner refresh 
         setTimeout(() => setrefresh(false), 3000);
+        
     }, [])
-
+    useEffect(() => {
+        if (verified=="true") {
+            setemailStatus(true);
+            setEmail(decodedemail);
+            setForm({fullname:localStorage.getItem('fullname')});
+        }
+        else if(verified=="false"){
+            setemailStatus(false);
+            setEmail(decodedemail);
+            setForm({fullname:localStorage.getItem('fullname')});
+        }
+        console.log("forms : ",verified);
+    }, [verified]);
+    
     // Config variables
     const SPREADSHEET_ID = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
     const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID1;
@@ -237,6 +258,10 @@ export default function Home() {
                 },
                 body: JSON.stringify({ newRow }),
             });
+            setTimeout(() => {
+                setSuccessMessage('Form submitted successfully!'); // Hide the loader
+                setloading(false);
+            }, 5000);
             
             //Send data to hello api for email response sending
             const emailresponse = await fetch("api/hello",{
@@ -247,10 +272,7 @@ export default function Home() {
                 body:JSON.stringify({Name:form.fullname,Email: email,Mobilenumber: formmob.mobile}),
             });
 
-            setTimeout(() => {
-                setSuccessMessage('Form submitted successfully!'); // Hide the loader
-                setloading(false);
-            }, 5000);
+            
             // Perform your form submission logic here
 
             setErrorMessage('');
@@ -384,14 +406,14 @@ export default function Home() {
 
     };
     const initialtoggle = {
-        wife: false,
-        child1: false,
+        wife: true,
+        child1: true,
         child2: false,
         child3: false,
 
-        father: false,
-        mother: false,
-        other_details: false
+        father: true,
+        mother: true,
+        other_details: true
     }
     const [form, setForm] = useState(initialvalues);
 
@@ -438,14 +460,25 @@ export default function Home() {
 
 
     //email
-    const [email, setEmail] = useState('');
+    
     const [mailerror, setMailerror] = useState('');
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = async (e) => {
         const newEmail = e.target.value;
         setEmail(newEmail);
         setMailerror(validateEmail(newEmail));
     };
+    const handleSendEmailverification = async () =>{
+        alert("Email Verification Sent ~~!");
+        const emailresponse = await fetch("api/emailtoken",{
+            method:"POST",
+            headers:{
+                "Content-type": "application/json",
+            },
+            body:JSON.stringify({Name:form.fullname,Email: email}),
+        });
+         localStorage.setItem('fullname',form.fullname);
+    }
 
 
 
@@ -551,7 +584,7 @@ export default function Home() {
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
-                                        <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name="fullname" placeholder='fullname' onChange={handleChange} />
+                                        <input className="form-input block w-full focus:bg-white" id="my-textfield" type="text" name="fullname" value={form.fullname} placeholder='fullname' onChange={handleChange} />
                                         {/* <p className="py-2 text-sm text-gray-600">add notes about populating the field</p> */}
                                     </div>
                                 </div>
@@ -563,7 +596,18 @@ export default function Home() {
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
-                                        <input className="form-input  block w-full focus:bg-white" id="my-textfield" type="email" name="email" placeholder='email' onChange={handleEmailChange} />
+                                        <div className='flex gap-2'>
+                                        <input className="form-input  block w-full focus:bg-white" id="my-textfield" type="email" value={email} name="email" placeholder='email' onChange={handleEmailChange} />
+                                        {emailstatus
+                                            ? null
+                                            : <button className='p-2 text-xs rounded-md bg-green-950 text-white hover:bg-green-700' onClick={handleSendEmailverification}>Verify</button>
+                                        }
+                                        
+                                        </div>
+                                        {emailstatus 
+                                            ? <div style={{ color: 'green' }}>Your email has been successfully verified!</div>
+                                            : <div style={{ color: 'red' }}>Your email has not been verified yet.</div>
+                                        }
                                         {/* <p className="py-2 text-sm text-gray-600"></p> */}
                                         {mailerror && <div style={{ color: 'red' }}>{mailerror}</div>}
 
@@ -821,7 +865,7 @@ export default function Home() {
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Wife details --
                             <div>
                                 <label class="inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" name="wife" class="sr-only peer" onChange={handletogglechange} />
+                                    <input type="checkbox" name="wife" class="sr-only peer" onChange={handletogglechange} checked = {toggle.wife}/>
                                     <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                                 </label>
@@ -1041,7 +1085,7 @@ export default function Home() {
                         <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="child1" class="sr-only peer" onChange={handletogglechange} />
+                                <input type="checkbox" name="child1" class="sr-only peer" onChange={handletogglechange} checked = {toggle.child1}/>
                                 <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
@@ -1286,7 +1330,7 @@ export default function Home() {
                         <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="child2" class="sr-only peer" onChange={handletogglechange} />
+                                <input type="checkbox" name="child2" class="sr-only peer" onChange={handletogglechange} checked = {toggle.child2}/>
                                 <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
@@ -1529,7 +1573,7 @@ export default function Home() {
                         <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="child3" class="sr-only peer" onChange={handletogglechange} />
+                                <input type="checkbox" name="child3" class="sr-only peer" onChange={handletogglechange} checked = {toggle.child3}/>
                                 <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
@@ -1788,7 +1832,7 @@ export default function Home() {
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Father Details</h2>
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="father" class="sr-only peer" onChange={handletogglechange} />
+                                <input type="checkbox" name="father" class="sr-only peer" onChange={handletogglechange} checked = {toggle.father} />
                                 <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
@@ -1985,8 +2029,8 @@ export default function Home() {
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Mother Details</h2>
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="mother" class="sr-only peer" onChange={handletogglechange} />
-                                <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <input type="checkbox" name="wife" class="sr-only peer" onChange={handletogglechange} checked = {toggle.mother} />
+                            <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
                         </div>

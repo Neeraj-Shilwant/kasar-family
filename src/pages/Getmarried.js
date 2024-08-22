@@ -92,9 +92,9 @@ const submitForm = async (e) => {
       headers:{
           "Content-type": "application/json",
       },
-      body:JSON.stringify(form.email),
+      body:JSON.stringify({email:form.email}),
     });
-
+   
     setTimeout(() => {
       setSuccessMessage('Form submitted successfully!'); // Hide the loader
       setloading(false);
