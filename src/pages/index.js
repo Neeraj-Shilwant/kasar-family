@@ -21,7 +21,7 @@ export default function Home() {
     const router = useRouter();
     const { verified, decodedemail } = router.query;
     const [emailstatus, setemailStatus] = useState(false);
-   
+    const [verimsg,setverimsg] = useState('');
     const [email, setEmail] = useState('');
     
 
@@ -35,11 +35,13 @@ export default function Home() {
             setemailStatus(true);
             setEmail(decodedemail);
             setForm({fullname:localStorage.getItem('fullname')});
+            setverimsg("Your email has been successfully verified!");
         }
         else if(verified=="false"){
             setemailStatus(false);
             setEmail(decodedemail);
             setForm({fullname:localStorage.getItem('fullname')});
+            setverimsg("Your email has not been verified yet.");
         }
         console.log("forms : ",verified);
     }, [verified]);
@@ -469,7 +471,7 @@ export default function Home() {
         setMailerror(validateEmail(newEmail));
     };
     const handleSendEmailverification = async () =>{
-        alert("Email Verification Sent ~~!");
+        alert("Email Verification Sent to your mail ID. Kindly Check ~~!");
         const emailresponse = await fetch("api/emailtoken",{
             method:"POST",
             headers:{
@@ -598,15 +600,19 @@ export default function Home() {
                                     <div className="md:w-2/3">
                                         <div className='flex gap-2'>
                                         <input className="form-input  block w-full focus:bg-white" id="my-textfield" type="email" value={email} name="email" placeholder='email' onChange={handleEmailChange} />
+
                                         {emailstatus
                                             ? null
-                                            : <button className='p-2 text-xs rounded-md bg-green-950 text-white hover:bg-green-700' onClick={handleSendEmailverification}>Verify</button>
+                                            :   <>
+                                                    <svg fill="#038c13" width="50px" height="50px" viewBox="-4.8 -4.8 41.60 41.60" xmlns="http://www.w3.org/2000/svg" stroke="#038c13" stroke-width="0.00032"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g data-name="Layer 42" id="Layer_42"> <path d="M29.63,15.23l-11-9A1,1,0,0,0,17,7v5.86L3.13,11a1,1,0,0,0-.79.24A1,1,0,0,0,2,12v8a1,1,0,0,0,.34.75,1,1,0,0,0,.79.24L17,19.14V25a1,1,0,0,0,.57.9A.94.94,0,0,0,18,26a1,1,0,0,0,.63-.23l11-9a1,1,0,0,0,0-1.54ZM19,22.89V18a1,1,0,0,0-.34-.75A1,1,0,0,0,18,17h-.13L4,18.86V13.14L17.87,15a1,1,0,0,0,.79-.24A1,1,0,0,0,19,14V9.11L27.42,16Z"></path> </g> </g></svg>
+                                                    <button className='p-2 text-xs rounded-md bg-green-950 text-white hover:bg-green-700' onClick={handleSendEmailverification}>Click to Verify</button>
+                                                </>
                                         }
                                         
                                         </div>
                                         {emailstatus 
-                                            ? <div style={{ color: 'green' }}>Your email has been successfully verified!</div>
-                                            : <div style={{ color: 'red' }}>Your email has not been verified yet.</div>
+                                            ? <div style={{ color: 'green' }}>{verimsg}</div>
+                                            : <div style={{ color: 'red' }}>{verimsg}</div>
                                         }
                                         {/* <p className="py-2 text-sm text-gray-600"></p> */}
                                         {mailerror && <div style={{ color: 'red' }}>{mailerror}</div>}
