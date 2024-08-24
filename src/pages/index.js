@@ -86,6 +86,7 @@ export default function Home() {
         setloading(true);
         if (
             email !== '' &&
+            emailstatus !== false &&
             // setMailerror === '' &&
             form.fullname !== '' &&
             form.education !== '' &&
@@ -564,7 +565,7 @@ export default function Home() {
 
                         {/* <!--Title--> */}
                         <h1 className="flex items-center font-sans font-bold break-normal text-gray-700 px-2 text-xl mt-12 lg:mt-0 md:text-2xl">
-                            Family details
+                            Family Details
                         </h1>
 
                         {/* <!--divider--> */}
@@ -580,8 +581,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
-                                            Full Name / पूर्ण नाव
+                                            Full Name 
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>पूर्ण नाव </label>
 
                                         </label>
                                     </div>
@@ -595,6 +598,8 @@ export default function Home() {
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
                                             Email Id
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>ईमेल आयडी </label>
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -605,7 +610,7 @@ export default function Home() {
                                             ? null
                                             :   <>
                                                     <svg fill="#038c13" width="50px" height="50px" viewBox="-4.8 -4.8 41.60 41.60" xmlns="http://www.w3.org/2000/svg" stroke="#038c13" stroke-width="0.00032"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g data-name="Layer 42" id="Layer_42"> <path d="M29.63,15.23l-11-9A1,1,0,0,0,17,7v5.86L3.13,11a1,1,0,0,0-.79.24A1,1,0,0,0,2,12v8a1,1,0,0,0,.34.75,1,1,0,0,0,.79.24L17,19.14V25a1,1,0,0,0,.57.9A.94.94,0,0,0,18,26a1,1,0,0,0,.63-.23l11-9a1,1,0,0,0,0-1.54ZM19,22.89V18a1,1,0,0,0-.34-.75A1,1,0,0,0,18,17h-.13L4,18.86V13.14L17.87,15a1,1,0,0,0,.79-.24A1,1,0,0,0,19,14V9.11L27.42,16Z"></path> </g> </g></svg>
-                                                    <button className='p-2 text-xs rounded-md bg-green-950 text-white hover:bg-green-700' onClick={handleSendEmailverification}>Click to Verify</button>
+                                                    <button className='p-2 text-xs rounded-md bg-yellow-700 text-white hover:bg-yellow-500' onClick={handleSendEmailverification}>Click to Verify</button>
                                                 </>
                                         }
                                         
@@ -622,8 +627,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textfield">
-                                            Education / शिक्षण
+                                            Education 
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>शिक्षण </label>
 
                                         </label>
                                     </div>
@@ -636,8 +643,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
-                                            Blood group / रक्त गट
+                                            Blood group 
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>रक्त गट </label>
 
                                         </label>
                                     </div>
@@ -662,8 +671,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                            Date of Birth / जन्मतारीख
+                                            Date of Birth
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>जन्मतारीख </label>
 
                                         </label>
                                     </div>
@@ -686,8 +697,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                            Address / पत्ता
+                                            Address
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>पत्ता </label>
 
                                         </label>
                                     </div>
@@ -703,6 +716,8 @@ export default function Home() {
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                             Google location Link
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>Google लोकेशन लिंक</label>
 
                                         </label>
                                     </div>
@@ -715,8 +730,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                            Mobile Number / मोबाईल नंबर
+                                            Mobile 
                                             <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>मोबाईल </label>
 
                                         </label>
                                     </div>
@@ -728,7 +745,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
-                                            Profession / व्यवसाय
+                                            Job / Business  
+                                            <span className={style.requiredStar}>*</span>
+                                            <br></br>
+                                            <label className='text-sm font-normal'>नोकरी/व्यवसाय </label>
                                             <span className={style.requiredStar}>*</span>
                                         </label>
                                     </div>
@@ -741,7 +761,9 @@ export default function Home() {
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                             House (Own or Rent)
                                             <span className={style.requiredStar}>*</span>
-
+                                            <br></br>
+                                            <label className='text-sm font-normal'>घर (स्वतःचे किंवा भाड्याने) </label>
+                                            <span className={style.requiredStar}>*</span>
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -751,8 +773,11 @@ export default function Home() {
                                 </div>
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
+                                        
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
-                                            या संघटनेसोबत सक्रिय कार्यरत आहे
+                                        Actively working with this organization
+                                        <br></br>
+                                        <label className='text-sm font-normal'>या संघटनेसोबत सक्रिय कार्यरत आहे</label>
 
                                         </label>
                                     </div>
@@ -793,7 +818,10 @@ export default function Home() {
                                 <div className="md:flex mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-select">
-                                            या संघटनेसोबत काम करण्यास इच्छुक आहे
+                                        Willing to work with this organization
+                                        <br></br>
+                                        <label className='text-sm font-normal'>या संघटनेसोबत काम करण्यास इच्छुक आहे</label>
+                                          
 
                                         </label>
                                     </div>
@@ -836,6 +864,9 @@ export default function Home() {
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                             Reference Name 1
                                             <span className={style.requiredStar}>*</span>
+                                            <br />
+                                            <label className='text-sm font-normal'>संदर्भ नाव</label>
+
 
                                         </label>
                                     </div>
@@ -849,7 +880,8 @@ export default function Home() {
                                         <label className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" htmlFor="my-textarea">
                                             Contact number 1
                                             <span className={style.requiredStar}>*</span>
-
+                                            <br />
+                                            <label className='text-sm font-normal'>संपर्क क्रमांक</label>
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -868,7 +900,12 @@ export default function Home() {
 
                         {/* <!--Title--> */}
 
-                        <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Wife details --
+                        <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Wife details --</h2>
+                        <p className="py-2 text-sm" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
+                        
+                        <label className='text-sm font-normal' style={{ color: "red" }}>
+                        टीप: लागू नसल्यास रिकामे सोडा</label>
+
                             <div>
                                 <label class="inline-flex items-center cursor-pointer">
                                     <input type="checkbox" name="wife" class="sr-only peer" onChange={handletogglechange} checked = {toggle.wife}/>
@@ -876,7 +913,7 @@ export default function Home() {
 
                                 </label>
                             </div>
-                        </h2>
+                        
 
 
                         {/* <p className="py-2 text-sm text-gray-600" style={{color:"red"}}></p> */}
@@ -1836,6 +1873,8 @@ export default function Home() {
                         <hr className="bg-gray-300 my-3" />
                         {/* <!--Title--> */}
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Father Details</h2>
+                        <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
+
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" name="father" class="sr-only peer" onChange={handletogglechange} checked = {toggle.father} />
@@ -2033,9 +2072,11 @@ export default function Home() {
                         <hr className="bg-gray-300 my-3" />
                         {/* <!--Title--> */}
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Mother Details</h2>
+                        <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
+
                         <div>
                             <label class="inline-flex items-center cursor-pointer">
-                            <input type="checkbox" name="wife" class="sr-only peer" onChange={handletogglechange} checked = {toggle.mother} />
+                            <input type="checkbox" name="mother" class="sr-only peer" onChange={handletogglechange} checked = {toggle.mother} />
                             <div class="relative w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
 
                             </label>
@@ -2229,7 +2270,8 @@ export default function Home() {
                         <hr className="bg-gray-300 my-3" />
                         {/* <!--Title--> */}
                         <h2 className="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Other Details</h2>
-                    
+                        <p className="py-2 text-sm text-gray-600" style={{ color: "red" }}>Note : If Not applicable leave empty</p>
+
 
                         {/* <!--Card--> */}
                         
